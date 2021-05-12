@@ -1,11 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
-import RecipeReviewCard from "../src/components/Card/index";
+import Header from "./components/Header";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <div className="App">
-      <RecipeReviewCard />
+      <Header />
+      <Home />
     </div>
   );
 }
