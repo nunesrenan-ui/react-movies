@@ -73,6 +73,7 @@ export const Box = styled.a`
   font-size: 5px;
   color: white;
   letter-spacing: 1px;
+  overflow-x: auto;
   width: ${({ primary }) => (primary ? "250px" : "120px")};
   :hover {
     cursor: pointer;

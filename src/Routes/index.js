@@ -10,7 +10,7 @@ const Routes = () => {
 
   useEffect(() => {
     axios
-      .post("http://www.omdbapi.com/?s=lord&page=10&apikey=6c91fd7d")
+      .post("http://www.omdbapi.com/?s=lord&page=1&apikey=6c91fd7d")
       .then((res) => dispatch(addData(res)));
   }, [dispatch]);
 

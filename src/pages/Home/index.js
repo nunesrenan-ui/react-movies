@@ -1,40 +1,18 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import Card from "../../components/Card";
+import { useState } from "react";
 import PageNotFoud from "../../components/NotFound";
 import Header from "../../components/Header/index";
 import { Container } from "./style";
+import InfinityScroolComponent from "../../components/InfinityScrool";
 
 const Home = () => {
-  const [values, setvalues] = useState([]);
   const [open, setOpen] = useState(true);
-  const data = useSelector((state) => state.data);
-
-  useEffect(() => {
-    if (data.data) {
-      setvalues(data.data.Search);
-    }
-  }, [data, values]);
+  const [search, setSearch] = useState("lord");
 
   return (
     <>
-      <Header setOpen={setOpen} />
+      <Header setOpen={setOpen} setSearch={setSearch} />
       <Container>
-        {open ? (
-          values.map(({ Title, Poster, Year, Type }, index) => {
-            return (
-              <Card
-                key={index}
-                Title={Title}
-                Poster={Poster}
-                Year={Year}
-                Type={Type}
-              />
-            );
-          })
-        ) : (
-          <PageNotFoud />
-        )}
+        {open ? <InfinityScroolComponent search={search} /> : <PageNotFoud />}
       </Container>
     </>
   );

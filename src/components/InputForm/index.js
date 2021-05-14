@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addData } from "../../store/Modules/Data/actions";
 
-const InputForm = ({ setOpen }) => {
+const InputForm = ({ setOpen, setSearch }) => {
   const [title, setTitle] = useState("");
 
   const dispatch = useDispatch();
@@ -18,11 +18,13 @@ const InputForm = ({ setOpen }) => {
       .then((res) => {
         if (res.data.Response === "True") {
           dispatch(addData(res));
+          setSearch(title);
           setOpen(true);
         } else {
           setOpen(false);
         }
-      });
+      })
+      .catch((e) => console.log(e));
   };
 
   return (

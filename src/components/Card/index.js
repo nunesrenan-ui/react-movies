@@ -21,7 +21,7 @@ const Card = ({ Poster, Title, Year, Type, rate }) => {
       ref={ref}
       primary={open}
       onClick={() => {
-        setOpen(true);
+        setOpen(!open);
         handleSubmit(Title);
       }}
     >
