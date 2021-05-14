@@ -1,24 +1,46 @@
-import { CardContainer, LeftSide, RightSide } from "./style";
+import axios from "axios";
+import { useRef, useState } from "react";
+import useOnClickOutside from "./onclickOutHook";
+import { CardContainer, LeftSide, RightSide, Box } from "./style";
 
-const coolDescription =
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem.";
+const Card = ({ Poster, Title, Year, Type, rate }) => {
+  const [open, setOpen] = useState(false);
+  const [description, setDescription] = useState([]);
+  const ref = useRef();
 
-const Card = ({ img, title, year, type, rate, description }) => {
+  const handleSubmit = (data) => {
+    axios
+      .post(`http://www.omdbapi.com/?t=${data}&plot=full&apikey=6c91fd7d`)
+      .then((res) => setDescription(res.data.Plot));
+  };
+
+  useOnClickOutside(ref, () => setOpen(false));
+
   return (
-    <CardContainer>
-      <LeftSide>
-        <img src={img} alt="any"></img>
-      </LeftSide>
-      <RightSide>
-        <h1>{title}</h1>
-        <ul>
-          <li>{year}</li>
-          <li>{type}</li>
-          <li>{rate}</li>
-        </ul>
-        <p>{description || coolDescription}</p>
-      </RightSide>
-    </CardContainer>
+    <Box
+      ref={ref}
+      primary={open}
+      onClick={() => {
+        setOpen(true);
+        handleSubmit(Title);
+      }}
+    >
+      <CardContainer>
+        <LeftSide>
+          <img src={Poster} alt="any"></img>
+        </LeftSide>
+        <RightSide>
+          <h1>{Title}</h1>
+          <ul>
+            <li>{Year}</li>
+            <li>{Type}</li>
+            <li>{rate}</li>
+          </ul>
+          <p>{description}</p>
+        </RightSide>
+      </CardContainer>
+      <h3>{Title}</h3>
+    </Box>
   );
 };
 

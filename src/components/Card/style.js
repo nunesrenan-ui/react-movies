@@ -3,23 +3,19 @@ import styled from "styled-components";
 export const CardContainer = styled.div`
   display: flex;
   height: 150px;
-  width: 100px;
+  margin: 10px;
   background: transparent;
   overflow: hidden;
-  margin: 0 auto;
   border-radius: 10px;
   box-shadow: 0px 5px 10px 1.5px rgba(0, 0, 0, 0.55);
-  :hover {
-    width: 250px;
-    transition: all 0.2s ease;
-  }
+  transition: all 0.2s ease;
 `;
 
 export const LeftSide = styled.div`
   width: 100px;
   background-size: contain;
   img {
-    min-width: inherit;
+    max-width: 100px;
     height: 100%;
     border-radius: 10px 0 0 10px;
     position: relative;
@@ -28,11 +24,15 @@ export const LeftSide = styled.div`
 
 export const RightSide = styled.div`
   display: flex;
+  overflow-x: hidden;
   flex-direction: column;
   width: 150px;
   height: inherit;
   background: #000000;
   border-radius: 0 10px 10px 0;
+  ::-webkit-scrollbar {
+    display: none;
+  }
   h1 {
     color: white;
     font-family: "Montserrat", sans-serif;
@@ -64,8 +64,17 @@ export const RightSide = styled.div`
     letter-spacing: 0.5px;
     line-height: 10px;
     text-align: justify;
-    margin-left: 10px;
     padding: 5px;
     text-transform: uppercase;
+  }
+`;
+
+export const Box = styled.a`
+  font-size: 5px;
+  color: white;
+  letter-spacing: 1px;
+  width: ${({ primary }) => (primary ? "250px" : "120px")};
+  :hover {
+    cursor: pointer;
   }
 `;

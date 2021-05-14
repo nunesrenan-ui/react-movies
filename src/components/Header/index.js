@@ -1,10 +1,10 @@
 import InputForm from "../InputForm";
 import { Container } from "./style";
 
-const Header = () => {
+const Header = ({ setOpen }) => {
   return (
     <Container>
-      <InputForm />
+      <InputForm setOpen={setOpen} />
     </Container>
   );
 };
