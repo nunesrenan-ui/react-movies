@@ -3,10 +3,11 @@ import styled from "styled-components";
 export const Container = styled.form`
   display: flex;
   align-items: center;
-  width: 250px;
+  width: 30%;
   height: 50px;
 
   input {
+    width: 60%;
     border-radius: 10px 0 0 10px;
     padding-left: 15px;
     height: 23px;

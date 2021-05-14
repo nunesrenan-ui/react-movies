@@ -56,9 +56,10 @@ const InfinityScroolComponent = ({ search }) => {
         display: "flex",
         flexDirection: "row",
         flexWrap: "wrap",
-        width: "90%",
+        width: "100%",
         height: "inherit",
         margin: "0 auto",
+        marginTop: "15vh",
       }}
       dataLength={values.items.length}
       next={fetchMoreData}
